@@ -15,6 +15,22 @@ vector<string> split(const string &);
 
 vector<int> maximumPerimeterTriangle(vector<int> sticks)
 {
+    //std::sort(sticks.begin(), sticks.end(), std::less<int>());
+    std::sort(sticks.begin(), sticks.end(), [](int a, int b){return a < b;} );
+    int i = sticks.size() - 1;
+
+    while (i > 1)
+    {
+        if (sticks[i-2] + sticks[i-1] > sticks[i])
+        {
+            return {sticks[i-2], sticks[i-1], sticks[i]};
+        }
+        else
+        {
+            i--;
+        }
+    }
+    
     return {-1};
 }
 
@@ -95,4 +111,3 @@ vector<string> split(const string &str) {
 
     return tokens;
 }
-
