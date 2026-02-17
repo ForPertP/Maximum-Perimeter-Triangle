@@ -1,3 +1,58 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+vector<string> split(const string &);
+
+/*
+ * Complete the 'maximumPerimeterTriangle' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER_ARRAY sticks as parameter.
+ */
+
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    string sticks_temp_temp;
+    getline(cin, sticks_temp_temp);
+
+    vector<string> sticks_temp = split(rtrim(sticks_temp_temp));
+
+    vector<int> sticks(n);
+
+    for (int i = 0; i < n; i++) {
+        int sticks_item = stoi(sticks_temp[i]);
+
+        sticks[i] = sticks_item;
+    }
+
+    vector<int> result = maximumPerimeterTriangle(sticks);
+
+    for (size_t i = 0; i < result.size(); i++) {
+        fout << result[i];
+
+        if (i != result.size() - 1) {
+            fout << " ";
+        }
+    }
+
+    fout << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
 string ltrim(const string &str)
 {
     string s(str);
