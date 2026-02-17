@@ -13,6 +13,22 @@ vector<string> split(const string &);
  * The function accepts INTEGER_ARRAY sticks as parameter.
  */
 
+vector<int> maximumPerimeterTriangle(vector<int> sticks)
+{
+    if (sticks.size() < 3)
+        return {-1};
+
+    sort(sticks.begin(), sticks.end());
+
+    for (int i = sticks.size() - 1; i >= 2; --i)
+    {
+        if (sticks[i - 2] + sticks[i - 1] > sticks[i])
+            return {sticks[i - 2], sticks[i - 1], sticks[i]};
+    }
+
+    return {-1};
+}
+
 
 int main()
 {
