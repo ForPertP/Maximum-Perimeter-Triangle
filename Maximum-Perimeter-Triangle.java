@@ -1,1 +1,41 @@
-Maximum-Perimeter-Triangle
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'maximumPerimeterTriangle' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts INTEGER_ARRAY sticks as parameter.
+     */
+
+    public static List<Integer> maximumPerimeterTriangle(List<Integer> sticks) {
+        if (sticks.size() < 3)
+            return Arrays.asList(-1);
+
+        Collections.sort(sticks);
+
+        for (int i = sticks.size() - 1; i >= 2; i--) {
+            if (sticks.get(i - 2) + sticks.get(i - 1) > sticks.get(i)) {
+                return Arrays.asList(
+                    sticks.get(i - 2),
+                    sticks.get(i - 1),
+                    sticks.get(i)
+                );
+            }
+        }
+
+        return Arrays.asList(-1);
+    }
+}
+
